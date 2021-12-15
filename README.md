@@ -1,4 +1,4 @@
-# A211 SQIT5033 Hotel Booking Project Demand
+# A211 SQIT5033 Hotel Booking Demand Project
 
 ![alt text](https://www.hotelspeak.com/wp-content/uploads/2019/05/hotel-direct-booking-strategy.jpg)
 
@@ -27,3 +27,6 @@ With the increase trend of cancellation from year to year, some hotel have think
 2. Building descriptive data mining to determine the data regularities and predictive data mining to predict cancellation.
 
 3. Build and Deploy web application / dashboard using Streamlit from predictive data mining, that can predict of cancellation based on user input.
+
+
+## Exploratory data analysis
