@@ -1,5 +1,7 @@
 # A211 SQIT5033 Hotel Booking Project Demand
 
+![alt text](https://www.hotelspeak.com/wp-content/uploads/2019/05/hotel-direct-booking-strategy.jpg)
+
 ## Introduction to Dataset
 
 We will use the Hotel Booking Demand dataset from the Kaggle.
