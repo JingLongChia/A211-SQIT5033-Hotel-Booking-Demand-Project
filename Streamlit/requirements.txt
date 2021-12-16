@@ -1,9 +1,0 @@
-Home==0.3.4
-pandas==1.2.4
-Prediction==0.0.3
-streamlit==1.0.0
-plotly==5.4.0
-Visualization==1.0.0
-joblib==1.0.1
-Pillow==8.4.0
-scikit_learn==1.0.1
