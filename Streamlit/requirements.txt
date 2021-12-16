@@ -1,9 +1,0 @@
-joblib==1.0.1
-matplotlib==3.5.0
-numpy==1.21.4
-pandas==1.2.4
-Pillow==8.4.0
-pycountry==20.7.3
-scikit_learn==1.0.1
-seaborn==0.11.1
-streamlit==1.0.0
