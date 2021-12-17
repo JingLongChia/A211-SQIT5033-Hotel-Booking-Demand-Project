@@ -18,6 +18,11 @@ With the increase trend of cancellation from year to year, some hotel have think
 
 ## Hypothesis
 
+1. There is no relationship between arrival_ months and is_canceled.
+
+2. There is no relationship between arrival_date_ year and is_canceled.
+
+3. There is no relationshio between arrival_date_month and is_canceld.
 
 
 ## Goals
@@ -30,3 +35,124 @@ With the increase trend of cancellation from year to year, some hotel have think
 
 
 ## Exploratory data analysis
+
+
+
+## Data pre-processing
+
+### 1. Dealing with Missing Values
+
+Check if our data contains any missing values
+
+```Python
+df = df.copy()
+df.isnull().sum().sort_values(ascending=False)[:10]
+```
+![image](https://user-images.githubusercontent.com/92434335/146466360-bd188cf8-2005-446e-a2e3-1a125c4c95ad.png)
+
+We have 4 features with missing values.
+In the agent and the company column, we have id_number for each agent or company, so for all the missing values, we will just replace it with 0.
+
+```Python
+## If no id of agent or company is null, just replace it with 0
+df[['agent','company']] = df[['agent','company']].fillna(0.0)
+```
+
+Children column contains the count of children, so we will replace all the missing values with the rounded mean value.
+And our country column contains country codes representing different countries. It is a categorical feature so I will also replace it with the mode value. The mode value is the value that appears more than any other value. So, in this case, I am replacing it with the country that appears the most often.
+
+```Python
+## For the missing values in the country column, replace it with mode (value that appears most often)
+df['country'].fillna(data.country.mode().to_string(), inplace=True)
+
+
+## for missing children value, replace it with rounded mean value
+df['children'].fillna(round(data.children.mean()), inplace=True)
+```
+There are many rows that have zero guests including adults, children and babies. We will just remove these rows.
+
+```Python
+## Drop Rows where there is no adult, baby and child
+df = df.drop(df[(df.adults+df.babies+df.children)==0].index)
+```
+### 2. Converting Datatype
+
+Let’s check the datatype of each column in our dataset.
+
+```Python
+df.dtypes
+```
+![image](https://user-images.githubusercontent.com/92434335/146466790-3ac0955e-8332-470e-8965-1c1727f6072f.png)
+
+We can see different data types for different columns.
+There are some columns like children, company, and agent, that are float type but their values are only in integers.
+
+```Python
+## convert datatype of these columns from float to integer
+df[['children', 'company', 'agent']] = df[['children', 'company', 'agent']].astype('int64')
+```
+So we will convert them to the integer type.
+
+## Descriptive and predictive data mining solution
+
+### 1. Descriptive data mining
+
+### 2. Predictive data mining
+
+- Feature Selection
+
+  - Create more relevant features and remove irrelevant or less important features.
+  - New feature call it Room which will contain 1 if the guest was assigned the same room that was reserved else 0.
+  - Another feature will be net_cancelled will contain 1 If the current customer has canceled more bookings in the past than the number of bookings he did not cancel, else 0.
+  - Now remove these unnecessary features : 'arrival_date_year','arrival_date_week_number','arrival_date_day_of_month',
+                                            'arrival_date_month','assigned_room_type','reserved_room_type','reservation_status_date',
+                                            'previous_cancellations','previous_bookings_not_canceled','reservation_status'
+  - Plot the heatmap and see the correlation.
+                                    
+- Model Building
+
+  - Two different Train Test Split (2:1 and 4:1)
+  - Two different application data mining (Orange and Jupyter notebook)
+  - Using pipeline for model building
+      - scaling for numerical features
+      - label encoder for categorical features
+   - Creating base model with two algorithm (Logistic Regression, Decision Tree Classifier)
+   - Checking evaluation matrix
+   - Hyperparameter tuning on best performing model
+   - Checking evaluation matrix on the tuned model
+   - Export the model with the best accuracy score
+  
+  - Data Product Building Using Streamlit
+  
+    - Data Description
+    - Data Visualization
+    - Data Prediction
+    
+## Experiment setting of the data mining 
+
+## Results and analysis of the performance comparison
+
+## Data product
+
+Data product using Streamlit: [here](https://share.streamlit.io/jinglongchia/sqit5033hotelbooking/main/app.py)
+
+- Data Description
+
+https://user-images.githubusercontent.com/92434335/146469465-e37d3c58-d7e5-474f-a0af-4230f75e4939.mp4
+
+Some description on data about where the data from, what are the contains in the data.
+
+- Data Visualization
+
+https://user-images.githubusercontent.com/92434335/146469552-148fcd2b-6a6f-4eaa-97e6-b126481c9491.mp4
+
+Analyze the hotel booking demand data accross various Exploratory data analysis using bar chart.
+
+- Data Prediction
+
+https://user-images.githubusercontent.com/92434335/146469588-e7271331-ee23-4a26-9c56-198996b6968a.mp4
+
+Predict the possible canceled hotel booking using Decision Tree classfication algorithm.
+
+## Conclusion and reflection
+
