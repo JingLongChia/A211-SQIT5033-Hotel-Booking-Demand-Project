@@ -118,7 +118,7 @@ So we will convert them to the integer type.
       - label encoder for categorical features
    - Creating base model with two algorithm (Logistic Regression, Decision Tree Classifier)
    - Checking evaluation matrix
-   - Hyperparameter tuning on best performing model
+   - Hyperparameter tuning on every model
    - Checking evaluation matrix on the tuned model
    - Export the model with the best accuracy score
   
