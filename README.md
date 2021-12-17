@@ -134,8 +134,6 @@ So we will convert them to the integer type.
 
 ### 2. Predictive data mining
 
-#### Orange 
-![image](https://user-images.githubusercontent.com/92434335/146476267-7bd591b4-5e0e-4e56-b17e-5239d2ee3913.png)
 
 
 ## Results and analysis of the performance comparison
