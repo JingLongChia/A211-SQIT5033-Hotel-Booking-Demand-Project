@@ -136,21 +136,15 @@ So we will convert them to the integer type.
 
 Data product using Streamlit: [here](https://share.streamlit.io/jinglongchia/sqit5033hotelbooking/main/app.py)
 
-- Data Description
-
-https://user-images.githubusercontent.com/92434335/146469465-e37d3c58-d7e5-474f-a0af-4230f75e4939.mp4
+https://user-images.githubusercontent.com/92434335/146469968-740dd315-3026-410f-ba95-0b46bd3de3e2.mp4
 
 Some description on data about where the data from, what are the contains in the data.
 
-- Data Visualization
-
-https://user-images.githubusercontent.com/92434335/146469552-148fcd2b-6a6f-4eaa-97e6-b126481c9491.mp4
+https://user-images.githubusercontent.com/92434335/146469985-102d24f5-c536-48f9-ab66-9e29fcbc1d7a.mp4
 
 Analyze the hotel booking demand data accross various Exploratory data analysis using bar chart.
 
-- Data Prediction
-
-https://user-images.githubusercontent.com/92434335/146469588-e7271331-ee23-4a26-9c56-198996b6968a.mp4
+https://user-images.githubusercontent.com/92434335/146470004-7517a26d-e441-4b2d-a626-8490339634f2.mp4
 
 Predict the possible canceled hotel booking using Decision Tree classfication algorithm.
 
