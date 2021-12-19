@@ -76,9 +76,9 @@ For the hotels this is nothing alarming since they don't lose revenue when no re
 ![image](https://user-images.githubusercontent.com/92434335/146670894-23c3f582-029f-4aed-b2e2-a8808de3c5dd.png)
 
 - From our analysis we see that corporate , Direct, and Aviation has a cancellation rate around 18 - 22 % of their booking
-- 
+
 - Travel Agent (Online / Offline) has a cancellation rate around 34 - 36 %
-- 
+
 - Lastly Group has the highest cancellation rate around 61 %
 
 Based on this we conclude that group booking are the market segment that's most likely to be canceled compared to other market segment while Direct has the lowest cancellation rate at 15% (Outside Complimentary).
@@ -161,7 +161,7 @@ Feature selection is a very important part and a very difficult one.
   - We have two features in our dataset reserved_room_type and another is assigned_room_type. We will make the new feature let’s call it Room which will contain 1 if the guest was assigned the same room that was reserved else 0. Guest can cancel the booking if he did not get the same room.
 
   - Another feature will be net_cancelled. It will contain 1 If the current customer has canceled more bookings in the past than the number of bookings he did not cancel, else 0.
-  - 
+ 
 ```Python
 # Make the new column which contain 1 if guest received the same room which was reserved otherwise 0
 df_subset['Room'] = 0
@@ -276,6 +276,7 @@ num_columns = ['lead_time','Room','net_cancelled']
 ```
 
 Below is the pipeline for the LabelEncoder and the K-Means clustering algorithm.
+
 K-Means clustering is a method of vector quantization, originally from signal processing, that aims to partition n observations into k clusters in which each observation belongs to the cluster with the nearest mean (cluster centers or cluster centroid), serving as a prototype of the cluster.
 
 ```Python
@@ -300,7 +301,8 @@ pipe_KM = Pipeline([
 
 After running the base model result of K-Means, of both two of dataset split (2:1 and 4:1).
 We will run for Hyperparameter Tuning model for K-Means by using GridSearchCV for both two of dataset split (2:1 and 4:1).
-GridSearchCV is a model selection step and this should be done after Data Processing tasks. It is always good to compare the performances of Tuned and Untuned Models. This will cost us the time and expense but will surely give us the best results. 
+GridSearchCV is a model selection step and this should be done after Data Processing tasks. 
+It is always good to compare the performances of Tuned and Untuned Models. This will cost us the time and expense but will surely give us the best results. 
 The scikit-learn API is a great resource in case of any help. It’s always good to learn by doing.
 
 Below is the parameter for GridSearchCV K-Means.
@@ -319,7 +321,31 @@ After running all the base model and tunnel model in different dataset split(2:1
 
 ### 2. Predictive data mining
 
+Predictive data mining can be view at: [here](https://github.com/JingLongChia/A211-SQIT5033-Hotel-Booking-Demand-Project/blob/main/Descriptive%20data%20mining/Descriptive%20Hotel%20(Train2Test1).ipynb)
 
+Target will set as is_canceled and other data select for this Predictive data mining based on the correlation on the Heatmaps.
+
+![image](https://user-images.githubusercontent.com/92434335/146695024-9b8cf151-7194-440a-88bc-fed5b828a95d.png)
+
+```Python
+X = df_1[['hotel','lead_time','market_segment', 'deposit_type','customer_type','Room','net_cancelled']]
+y = df_1['is_canceled']
+```
+
+For this Descriptive data mining will using two different dataset split which is 2:1 and 4:1
+
+```Python
+X_train, X_test, y_train, y_test = train_test_split(X, y, stratify = y, test_size = 0.33, random_state = 42)
+#And
+X_train, X_test, y_train, y_test = train_test_split(X, y, stratify = y, test_size = 0.25, random_state = 42)
+```
+The data selected in X which the data be train an test which classify as categorical and numerical.
+The categorical selected will be converting from categorical variables to numerical by using LabelEncoder from Sklearn to encode in an ordinal fashion.
+
+```Python
+cat_columns = ['hotel','market_segment','deposit_type','customer_type']
+num_columns = ['lead_time','Room','net_cancelled']
+```
 
 ## Results and analysis of the performance comparison
 
