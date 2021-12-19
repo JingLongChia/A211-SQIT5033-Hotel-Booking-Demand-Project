@@ -34,6 +34,8 @@ With the increase trend of cancellation from year to year, some hotel have think
 
 ## Exploratory data analysis
 
+Exploratory data analysis can be review at: [here](https://github.com/JingLongChia/A211-SQIT5033-Hotel-Booking-Demand-Project/blob/main/Exploratory%20Data%20Analysis/Exploratory%20Data%20Analysis.ipynb)
+
 ### Booking Hotel & Cancellation
 
 ![image](https://user-images.githubusercontent.com/92434335/146670213-07b8b340-4c39-41e4-83f4-dcc2f426c787.png)
@@ -150,21 +152,65 @@ df[['children', 'company', 'agent']] = df[['children', 'company', 'agent']].asty
 ```
 So we will convert them to the integer type.
 
+### 3. Feature Selection
+
+Feature selection is a very important part and a very difficult one. 
+
+- Now let’s create some new features.
+
+  - We have two features in our dataset reserved_room_type and another is assigned_room_type. We will make the new feature let’s call it Room which will contain 1 if the guest was assigned the same room that was reserved else 0. Guest can cancel the booking if he did not get the same room.
+
+  - Another feature will be net_cancelled. It will contain 1 If the current customer has canceled more bookings in the past than the number of bookings he did not cancel, else 0.
+  - 
+```Python
+# Make the new column which contain 1 if guest received the same room which was reserved otherwise 0
+df_subset['Room'] = 0
+df_subset.loc[ df_subset['reserved_room_type'] == df_subset['assigned_room_type'] , 'Room'] = 1
+
+
+## Make the new column which contain 1 if the guest has cancelled more booking in the past
+## than the number of booking he did not cancel, otherwise 0
+
+df_subset['net_cancelled'] = 0
+df_subset.loc[ df_subset['previous_cancellations'] > df_subset['previous_bookings_not_canceled'] , 'net_cancelled'] = 1
+```
+
+Now remove these unnecessary features.
+
+```Python
+## Remove the less important features
+df_subset = df_subset.drop(['arrival_date_year','arrival_date_week_number','arrival_date_day_of_month',
+                            'arrival_date_month','assigned_room_type','reserved_room_type','reservation_status_date',
+                            'previous_cancellations','previous_bookings_not_canceled'],axis=1)
+```
+
+Let’s also remove the reservation_status. Even though it is a very important feature, but it already has information about canceled booking. Further, It can only have information after the booking was canceled or the guest checked in. So it will not be useful to use this feature in our predictive model. Because for the future prediction we won’t have information about the reservation status.
+
+```Python
+## Remove reservation_status column
+## because it tells us if booking was cancelled 
+df_subset = df_subset.drop(['reservation_status'], axis=1)
+```
+Let’s plot the heatmap and see the correlation
+
+```Python
+## Plot the heatmap to see correlation with columns
+import dython
+from dython.nominal import associations
+associations(df_subset, figsize = (40, 20))
+plt.show()
+```
+![A211-SQIT5033-Hotel-Booking-Demand-Project_Predictive Hotel (Train2Test1) ipynb at main · JingLongCh](https://user-images.githubusercontent.com/92434335/146694734-3b11849a-f279-4e25-aafc-8321e0de49b9.png)
+
+We can see our new features, Room and net_cancelled have a higher correlation with is_cancelled than most of the other columns.
+
 ## Descriptive and predictive data mining solution
 
 ### 1. Descriptive data mining
 
 ### 2. Predictive data mining
 
-- Feature Selection
-
-  - Create more relevant features and remove irrelevant or less important features.
-  - New feature call it Room which will contain 1 if the guest was assigned the same room that was reserved else 0.
-  - Another feature will be net_cancelled will contain 1 If the current customer has canceled more bookings in the past than the number of bookings he did not cancel, else 0.
-  - Now remove these unnecessary features : 'arrival_date_year','arrival_date_week_number','arrival_date_day_of_month',
-                                            'arrival_date_month','assigned_room_type','reserved_room_type','reservation_status_date',
-                                            'previous_cancellations','previous_bookings_not_canceled','reservation_status'
-  - Plot the heatmap and see the correlation.
+  - Plot the heatmap and see the correlation and choose the data to predict.
                                     
 - Model Building
 
