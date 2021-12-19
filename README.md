@@ -208,9 +208,24 @@ We can see our new features, Room and net_cancelled have a higher correlation wi
 
 ### 1. Descriptive data mining
 
+- Plot the heatmap and see the correlation and choose the data to descriptive.
+                                    
+- Model Building
+
+  - Two different Train Test Split (2:1 and 4:1)
+  - Using Jupyter notebook with python language to do descriptive data mining.
+  - Using pipeline for model building
+      - scaling for numerical features
+      - label encoder for categorical features
+   - Creating base model with K-Means clustering algorithm.
+   - Checking evaluation matrix
+   - Hyperparameter tuning on every model
+   - Checking evaluation matrix on the tuned model
+   - Export the model with the best accuracy score
+
 ### 2. Predictive data mining
 
-  - Plot the heatmap and see the correlation and choose the data to predict.
+- Plot the heatmap and see the correlation and choose the data to predict.
                                     
 - Model Building
 
@@ -219,14 +234,14 @@ We can see our new features, Room and net_cancelled have a higher correlation wi
   - Using pipeline for model building
       - scaling for numerical features
       - label encoder for categorical features
-   - Creating base model with two algorithm (Logistic Regression, Decision Tree Classifier)
+   - Creating base model with two classification algorithm (Logistic Regression, Decision Tree Classifier)
    - Checking evaluation matrix
    - Hyperparameter tuning on every model
    - Checking evaluation matrix on the tuned model
    - Export the model with the best accuracy score
   
   - Data Product Building Using Streamlit
-  
+
     - Data Description
     - Data Visualization
     - Data Prediction
@@ -234,6 +249,8 @@ We can see our new features, Room and net_cancelled have a higher correlation wi
 ## Experiment setting of the data mining 
 
 ### 1. Descriptive data mining
+
+
 
 ### 2. Predictive data mining
 
