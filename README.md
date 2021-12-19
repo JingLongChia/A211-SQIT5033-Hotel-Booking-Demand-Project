@@ -36,7 +36,61 @@ With the increase trend of cancellation from year to year, some hotel have think
 
 ## Exploratory data analysis
 
+### Booking Hotel & Cancellation
 
+![image](https://user-images.githubusercontent.com/92434335/146670213-07b8b340-4c39-41e4-83f4-dcc2f426c787.png)
+
+Based on the graph above, shown the hotel booking cancellation for both type of hotel is less than 50%, this means the customer will not cancel booking casually.
+
+City Hotel Booking have 42% cancellation Rate while Resort Hotel Booking have 28% cancellation Rate.
+
+This is probably because most of the city hotel bookings are for work needs. Sometimes the booking may be cancelled if the time is too busy. Most of the customers of Resort hotel come for vacation, I believe that few people take the initiative to cancel a pleasant holiday trip.
+
+### Arrival Month & Cancellation
+
+![image](https://user-images.githubusercontent.com/92434335/146670335-0cdfad9f-a405-48e9-9b1a-c78547fd1767.png)
+
+Look at the table above, majority of the month has a cancellation rate around 30 to 40 percent.
+
+The difference is not big, the small changes are likely to be due to the seasons and holidays.
+
+### Deposit Type & Cancellation
+
+![image](https://user-images.githubusercontent.com/92434335/146670467-5a2df63c-718e-4fb3-957f-1d8369331aea.png)
+
+This Dataset has 3 kinds of deposit type NO Deposit, NO Refund, and Refundable, all of the name is kind of self explanatory, based on our analysis we found out that:
+
+- No Refund Booking has the highest cancellation rate at 99.4%
+
+- No Deposit has cancellation rate of 28.3 %
+
+- While Refundable has cancellation rate around 22%
+
+For the hotels this is nothing alarming since they don't lose revenue when no refund booking is canceled, but it's always a good practice to question something is extraordinary, why does non refundable booking are most likely to be canceled? isn't just like wasting money cancelling your non refundable booking. To answer that question let's look at the median lead time of each deposit type.
+
+### Market Segment & Cancellation
+
+![image](https://user-images.githubusercontent.com/92434335/146670894-23c3f582-029f-4aed-b2e2-a8808de3c5dd.png)
+
+- From our analysis we see that corporate , Direct, and Aviation has a cancellation rate around 18 - 22 % of their booking
+- 
+- Travel Agent (Online / Offline) has a cancellation rate around 34 - 36 %
+- 
+- Lastly Group has the highest cancellation rate around 61 %
+
+Based on this we conclude that group booking are the market segment that's most likely to be canceled compared to other market segment while Direct has the lowest cancellation rate at 15% (Outside Complimentary)
+
+### Repeated Guest & Cancellation¶
+
+![image](https://user-images.githubusercontent.com/92434335/146670935-031f83a4-5112-45b5-a0b1-4bd883ece803.png)
+
+In this dataset we only have around 3% of repeated guest, tho we still see the difference of cancellation pattern in both repeated guest and non repeated guest.
+
+- Repeated Guest has cancellation rate around 14%
+- 
+- Non Repeated Guest are more than 2X more likely to cancelled the booking compared to repeated guest
+
+In conclusion, Repeated Guest are more likely to confirm their booking compared to non repeated guest.
 
 ## Data pre-processing
 
