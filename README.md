@@ -36,7 +36,7 @@ With the increase trend of cancellation from year to year, some hotel have think
 
 Exploratory data analysis can be review at: [here](https://github.com/JingLongChia/A211-SQIT5033-Hotel-Booking-Demand-Project/blob/main/Exploratory%20Data%20Analysis/Exploratory%20Data%20Analysis.ipynb)
 
-### Booking Hotel & Cancellation
+### 1. Booking Hotel & Cancellation
 
 ![image](https://user-images.githubusercontent.com/92434335/146670213-07b8b340-4c39-41e4-83f4-dcc2f426c787.png)
 
@@ -47,7 +47,7 @@ City Hotel Booking have 42% cancellation Rate while Resort Hotel Booking have 28
 This is probably because most of the city hotel bookings are for work needs. Sometimes the booking may be cancelled if the time is too busy. Most of the customers of Resort hotel come for vacation, I believe that few people take the initiative to cancel a pleasant holiday trip.
 
 
-### Arrival Month & Cancellation
+### 2. Arrival Month & Cancellation
 
 ![image](https://user-images.githubusercontent.com/92434335/146670335-0cdfad9f-a405-48e9-9b1a-c78547fd1767.png)
 
@@ -56,7 +56,7 @@ Look at the table above, majority of the month has a cancellation rate around 30
 The difference is not big, the small changes are likely to be due to the seasons and holidays.
 
 
-### Deposit Type & Cancellation
+### 3. Deposit Type & Cancellation
 
 ![image](https://user-images.githubusercontent.com/92434335/146670467-5a2df63c-718e-4fb3-957f-1d8369331aea.png)
 
@@ -71,7 +71,7 @@ This Dataset has 3 kinds of deposit type NO Deposit, NO Refund, and Refundable, 
 For the hotels this is nothing alarming since they don't lose revenue when no refund booking is canceled, but it's always a good practice to question something is extraordinary, why does non refundable booking are most likely to be canceled? isn't just like wasting money cancelling your non refundable booking. To answer that question let's look at the median lead time of each deposit type.
 
 
-### Market Segment & Cancellation
+### 4. Market Segment & Cancellation
 
 ![image](https://user-images.githubusercontent.com/92434335/146670894-23c3f582-029f-4aed-b2e2-a8808de3c5dd.png)
 
@@ -84,7 +84,7 @@ For the hotels this is nothing alarming since they don't lose revenue when no re
 Based on this we conclude that group booking are the market segment that's most likely to be canceled compared to other market segment while Direct has the lowest cancellation rate at 15% (Outside Complimentary).
 
 
-### Repeated Guest & Cancellation¶
+### 5. Repeated Guest & Cancellation¶
 
 ![image](https://user-images.githubusercontent.com/92434335/146670935-031f83a4-5112-45b5-a0b1-4bd883ece803.png)
 
@@ -200,6 +200,7 @@ from dython.nominal import associations
 associations(df_subset, figsize = (40, 20))
 plt.show()
 ```
+
 ![A211-SQIT5033-Hotel-Booking-Demand-Project_Predictive Hotel (Train2Test1) ipynb at main · JingLongCh](https://user-images.githubusercontent.com/92434335/146694734-3b11849a-f279-4e25-aafc-8321e0de49b9.png)
 
 We can see our new features, Room and net_cancelled have a higher correlation with is_cancelled than most of the other columns.
@@ -250,7 +251,71 @@ We can see our new features, Room and net_cancelled have a higher correlation wi
 
 ### 1. Descriptive data mining
 
+Target will set as is_canceled and other data select for this Descriptive data mining based on the correlation on the Heatmaps.
 
+![image](https://user-images.githubusercontent.com/92434335/146695024-9b8cf151-7194-440a-88bc-fed5b828a95d.png)
+
+```Python
+X = df_1[['hotel','lead_time','market_segment', 'deposit_type','customer_type','Room','net_cancelled']]
+y = df_1['is_canceled']
+```
+
+For this Descriptive data mining will using two different dataset split which is 2:1 and 4:1
+
+```Python
+X_train, X_test, y_train, y_test = train_test_split(X, y, stratify = y, test_size = 0.33, random_state = 42)
+#And
+X_train, X_test, y_train, y_test = train_test_split(X, y, stratify = y, test_size = 0.25, random_state = 42)
+```
+The data selected in X which the data be train an test which classify as categorical and numerical.
+The categorical selected will be converting from categorical variables to numerical by using LabelEncoder from Sklearn to encode in an ordinal fashion.
+
+```Python
+cat_columns = ['hotel','market_segment','deposit_type','customer_type']
+num_columns = ['lead_time','Room','net_cancelled']
+```
+
+Below is the pipeline for the LabelEncoder and the K-Means clustering algorithm.
+K-Means clustering is a method of vector quantization, originally from signal processing, that aims to partition n observations into k clusters in which each observation belongs to the cluster with the nearest mean (cluster centers or cluster centroid), serving as a prototype of the cluster.
+
+```Python
+categorical_pipeline = Pipeline([
+    ('encoder', OneHotEncoder())
+])
+
+numerical_pipeline = Pipeline([
+    ('scaler', RobustScaler())
+])
+
+prepocessor = ColumnTransformer([
+    ('categorical',categorical_pipeline,cat_columns),
+    ('numerical', numerical_pipeline,num_columns)
+])
+
+pipe_KM = Pipeline([
+    ("prep", prepocessor),
+    ("algo", KMeans(n_clusters=2))
+])
+```
+
+After running the base model result of K-Means, of both two of dataset split (2:1 and 4:1).
+We will run for Hyperparameter Tuning model for K-Means by using GridSearchCV for both two of dataset split (2:1 and 4:1).
+GridSearchCV is a model selection step and this should be done after Data Processing tasks. It is always good to compare the performances of Tuned and Untuned Models. This will cost us the time and expense but will surely give us the best results. 
+The scikit-learn API is a great resource in case of any help. It’s always good to learn by doing.
+
+Below is the parameter for GridSearchCV K-Means.
+
+```Python
+param_KM = {
+    'algo__max_iter': [300,600,900],
+    'algo__n_init': [10,20,30],
+    'algo__algorithm': ['auto']
+}
+
+model_KM = GridSearchCV(estimator=pipe_KM, param_grid=param_KM, cv = 3, n_jobs = -1, verbose = 1, scoring='accuracy')
+model_KM.fit(X_train, y_train)
+```
+After running all the base model and tunnel model in different dataset split(2:1 and 4:1), we will compare both and select the best performing model.
 
 ### 2. Predictive data mining
 
