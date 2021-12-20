@@ -592,7 +592,8 @@ Best performing model for will be Predictive data mining used:
 #### Increase Direct Booking Market Segment
 
 - From this dataset we see that direct booking has the least cancellation rate 15% (outside complimentary) compared to other market segment, with only being 10% of total booking market segment having more booking from direct market segment will likely to reduce the number of cancellation.
-Strategy to increase Direct Booking
+
+##### Strategy to increase Direct Booking
 
 1. Leverage the power of a well optimized website
 
