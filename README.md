@@ -416,7 +416,103 @@ After running all the base model and tunnel model in different dataset split(2:1
 
 ### 1. Descriptive data mining
 
+In this part, the application used is Jupyter Notebook with Python language.
+The Orange software cannot calculate accuarcy with dataset split, so is not include in this analysis.
+
+- Below is the Base model Evaluation Matrix result for dataset split (2:1 and 4:1)
+
+#### Dataset split (2:1)
+
+![image](https://user-images.githubusercontent.com/92434335/146695881-6633ac31-6562-494f-96a3-f6c190842be6.png)
+
+#### Dataset split (4:1)
+
+![image](https://user-images.githubusercontent.com/92434335/146695948-71d945fa-deb6-4d20-983e-d28476334fe3.png)
+
+Based on the result above, we can see that the Dataset split (2:1) have better Accucary	0.644891 compare to Dataset split (4:1) Accucary 0.355971.
+
+After comparing for base model, we will look to other tunnel model.
+
+- Below is the tunnel model Evaluation Matrix result for dataset split (2:1 and 4:1)
+
+#### Dataset split (2:1)
+
+![image](https://user-images.githubusercontent.com/92434335/146696212-38900de1-31f6-4e9d-bb8a-67491049ce38.png)
+
+#### Dataset split (4:1)
+
+![image](https://user-images.githubusercontent.com/92434335/146696172-0d1c6eff-7f3b-4980-812f-100e87b4a209.png)
+
+Based on the result above show the Hyperparameter Tuning using GridSearchCV.
+We can see that the Accucary for Dataset split (2:1) have increase from 0.644891 to 0.645043.
+Accucary for Dataset split (4:1) have increase from 0.355971 to 0.644163.
+
+Although the data set split (4:1) increased the most, but the accuracy of the dataset split (2:1) is the best performing model for Descriptive data mining.
+
+- So, the best performing model for will be Descriptive data mining used:
+  - Jupyter Notebook with Python language
+  - K-Menas classification algorithm
+  - Dataset split (2:1)
+
 ### 2. Predictive data mining
+
+In this part, the application used is Jupyter Notebook with Python language and Orange Software.
+
+- Below is the Base model Evaluation Matrix result for dataset split (2:1 and 4:1)
+
+#### Orange Software Dataset split (2:1)
+
+![image](https://user-images.githubusercontent.com/92434335/146696847-04d31a5e-1e9c-4e5e-8c2f-8681b971567f.png)
+
+#### Jupyter Notebook Dataset split (2:1)
+
+![image](https://user-images.githubusercontent.com/92434335/146696742-a47d8a18-5009-4200-93c3-fe81914168a2.png)
+
+#### Orange Software Dataset split (4:1)
+
+![image](https://user-images.githubusercontent.com/92434335/146696859-63d48d1a-d6df-476f-84df-3261a8be31e0.png)
+
+#### Jupyter Notebook Dataset split (4:1)
+
+![image](https://user-images.githubusercontent.com/92434335/146696716-cfa6adc5-0db4-451c-8457-3ff887863486.png)
+
+#### Table of comparison
+
+![image](https://user-images.githubusercontent.com/92434335/146696600-bfa21ae1-962d-4e57-800a-144187f87df2.png)
+
+Based on the result above, we can see that the Accucary	for Dataset split (4:1) using Jupyter Notebook with decision tree classification algorithm have better Accucary 0.782862 compare to other.
+
+After comparing for base model, we will look to other tunnel model.
+
+- Below is the tunnel model Evaluation Matrix result for dataset split (2:1 and 4:1)
+
+#### Orange Software Dataset split (2:1)
+
+![image](https://user-images.githubusercontent.com/92434335/146696871-50b6c474-efb8-4fdb-bd26-7423f70d9ebe.png)
+
+#### Jupyter Notebook Dataset split (2:1)
+
+![image](https://user-images.githubusercontent.com/92434335/146696920-0a5c850d-d216-4dfe-846b-3292274a5a5d.png)
+
+#### Orange Software Dataset split (4:1)
+
+![image](https://user-images.githubusercontent.com/92434335/146696896-55dafdf2-27fb-48ce-a051-2a5bdff3b880.png)
+
+#### Jupyter Notebook Dataset split (4:1)
+
+![image](https://user-images.githubusercontent.com/92434335/146696931-8c2a607d-e923-4605-9783-45da00daf041.png)
+
+#### Table of comparison
+
+![image](https://user-images.githubusercontent.com/92434335/146696940-c8c3b4f9-c874-422c-b53d-39dcf9f2941b.png)
+
+Based on the result above show the Hyperparameter Tuning using GridSearchCV.
+We can see that the Accucary for Dataset split (4:1) using Jupyter Notebook with decision tree classification algorithm have better Accucary 0.782862 compare to other.
+
+- So, the best performing model for will be Predictive data mining used:
+  - Jupyter Notebook with Python language
+  - Decision tree classification algorithm
+  - Dataset split (4:1)
 
 ## Data product
 
