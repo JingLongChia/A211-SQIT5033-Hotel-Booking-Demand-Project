@@ -507,12 +507,12 @@ After comparing for base model, we will look to other tunnel model.
 ![image](https://user-images.githubusercontent.com/92434335/146696940-c8c3b4f9-c874-422c-b53d-39dcf9f2941b.png)
 
 Based on the result above show the Hyperparameter Tuning using GridSearchCV.
-We can see that the Accucary for Dataset split (4:1) using Jupyter Notebook with decision tree classification algorithm have better Accucary 0.782862 compare to other.
+We can see that the Accucary for Dataset split (2:1) using Jupyter Notebook with decision tree classification algorithm have better Accucary 0.7828 compare to other.
 
 - So, the best performing model for will be Predictive data mining used:
   - Jupyter Notebook with Python language
   - Decision tree classification algorithm
-  - Dataset split (4:1)
+  - Dataset split (2:1)
 
 ## Data product
 
@@ -585,7 +585,7 @@ Best performing model for will be Descriptive data mining used:
 Best performing model for will be Predictive data mining used:
   - Jupyter Notebook with Python language
   - Decision tree classification algorithm
-  - Dataset split (4:1)
+  - Dataset split (2:1)
 
 ### Reflection / Recommendation
 
