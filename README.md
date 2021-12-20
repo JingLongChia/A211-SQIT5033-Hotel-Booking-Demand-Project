@@ -68,7 +68,7 @@ This Dataset has 3 kinds of deposit type NO Deposit, NO Refund, and Refundable, 
 
 - While Refundable has cancellation rate around 22%
 
-For the hotels this is nothing alarming since they don't lose revenue when no refund booking is canceled, but it's always a good practice to question something is extraordinary, why does non refundable booking are most likely to be canceled? isn't just like wasting money cancelling your non refundable booking. To answer that question let's look at the median lead time of each deposit type.
+For the hotels this is nothing alarming since they don't lose revenue when no refund booking is canceled.
 
 
 ### 4. Market Segment & Cancellation
@@ -84,7 +84,7 @@ For the hotels this is nothing alarming since they don't lose revenue when no re
 Based on this we conclude that group booking are the market segment that's most likely to be canceled compared to other market segment while Direct has the lowest cancellation rate at 15% (Outside Complimentary).
 
 
-### 5. Repeated Guest & Cancellation¶
+### 5. Repeated Guest & Cancellation
 
 ![image](https://user-images.githubusercontent.com/92434335/146670935-031f83a4-5112-45b5-a0b1-4bd883ece803.png)
 
@@ -532,3 +532,78 @@ Predict the possible canceled hotel booking using Decision Tree classfication al
 
 ## Conclusion and reflection
 
+### Exploratory Data Analysis
+
+#### 1. Booking Hotel & Cancellation
+
+City Hotel Booking have 42% cancellation Rate while Resort Hotel Booking have 28% cancellation Rate.
+- This is probably because most of the city hotel bookings are for work needs. Sometimes the booking may be cancelled if the time is too busy. Most of the customers of Resort hotel come for vacation, I believe that few people take the initiative to cancel a pleasant holiday trip.
+
+#### 2. Arrival Month & Cancellation
+
+-Majority of the month has a cancellation rate around 30 to 40 percent.
+
+The difference is not big, the small changes are likely to be due to the seasons and holidays.
+
+#### 3. Deposit Type & Cancellation
+
+- No Refund Booking has the highest cancellation rate at 99.4%
+
+- No Deposit has cancellation rate of 28.3 %
+- 
+- While Refundable has cancellation rate around 22%
+- 
+For the hotels this is nothing alarming since they don't lose revenue when no refund booking is canceled.
+
+### 4. Market Segment & Cancellation
+
+- From our analysis we see that corporate , Direct, and Aviation has a cancellation rate around 18 - 22 % of their booking
+
+- Travel Agent (Online / Offline) has a cancellation rate around 34 - 36 %
+
+- Lastly Group has the highest cancellation rate around 61 %
+
+Based on this we conclude that group booking are the market segment that's most likely to be canceled compared to other market segment while Direct has the lowest cancellation rate at 15% (Outside Complimentary).
+
+### 5. Repeated Guest & Cancellation
+
+- Repeated Guest has cancellation rate around 14%
+
+- Non Repeated Guest are more than 2X more likely to cancelled the booking compared to repeated guest
+
+In conclusion, Repeated Guest are more likely to confirm their booking compared to non repeated guest.
+
+### Descriptive data mining
+
+Best performing model for will be Descriptive data mining used:
+  - Jupyter Notebook with Python language
+  - K-Menas classification algorithm
+  - Dataset split (2:1)
+
+### Predrictive data mining
+
+Best performing model for will be Predictive data mining used:
+  - Jupyter Notebook with Python language
+  - Decision tree classification algorithm
+  - Dataset split (4:1)
+
+### Reflection / Recommendation
+
+#### Increase Direct Booking Market Segment
+
+- From this dataset we see that direct booking has the least cancellation rate 15% (outside complimentary) compared to other market segment, with only being 10% of total booking market segment having more booking from direct market segment will likely to reduce the number of cancellation.
+Strategy to increase Direct Booking
+
+1. Leverage the power of a well optimized website
+
+  - Visually attractive website
+  - Offer & Ensure Best Rate Guarantee
+  - Multilanguage & multi currency features
+  
+2. Increase Hotel Online Reputation
+
+  - Almost 98% of travelers read hotel reviews and 80% of them consider them extremely important before making the final reservation. A one-point increase in a hotel’s average user rating on a 5-point scale (eg, 3.8 to 4.8) makes potential customers 13.5% more likely to book that hotel
+
+3. Offer Loyalty program with difference
+
+  - Incentivizing your guest with loyalty programs to book directly at the hotel website, by giving them points that could easily be redeemed not only at the hotel but at also at certain POS outlets
