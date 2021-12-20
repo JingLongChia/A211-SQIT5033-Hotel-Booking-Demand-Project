@@ -251,6 +251,8 @@ We can see our new features, Room and net_cancelled have a higher correlation wi
 
 ### 1. Descriptive data mining
 
+Descriptive data mining can be review at: [here](https://github.com/JingLongChia/A211-SQIT5033-Hotel-Booking-Demand-Project/tree/main/Descriptive%20data%20mining)
+
 Target will set as is_canceled and other data select for this Descriptive data mining based on the correlation on the Heatmaps.
 
 ![image](https://user-images.githubusercontent.com/92434335/146695024-9b8cf151-7194-440a-88bc-fed5b828a95d.png)
@@ -277,7 +279,7 @@ num_columns = ['lead_time','Room','net_cancelled']
 
 Below is the pipeline for the LabelEncoder and the K-Means clustering algorithm.
 
-K-Means clustering is a method of vector quantization, originally from signal processing, that aims to partition n observations into k clusters in which each observation belongs to the cluster with the nearest mean (cluster centers or cluster centroid), serving as a prototype of the cluster.
+- K-Means clustering is a method of vector quantization, originally from signal processing, that aims to partition n observations into k clusters in which each observation belongs to the cluster with the nearest mean (cluster centers or cluster centroid), serving as a prototype of the cluster.
 
 ```Python
 categorical_pipeline = Pipeline([
@@ -302,7 +304,8 @@ pipe_KM = Pipeline([
 After running the base model result of K-Means, of both two of dataset split (2:1 and 4:1).
 We will run for Hyperparameter Tuning model for K-Means by using GridSearchCV for both two of dataset split (2:1 and 4:1).
 GridSearchCV is a model selection step and this should be done after Data Processing tasks. 
-It is always good to compare the performances of Tuned and Untuned Models. This will cost us the time and expense but will surely give us the best results. 
+It is always good to compare the performances of Tuned and Untuned Models. 
+This will cost us the time and expense but will surely give us the best results. 
 The scikit-learn API is a great resource in case of any help. It’s always good to learn by doing.
 
 Below is the parameter for GridSearchCV K-Means.
@@ -321,7 +324,7 @@ After running all the base model and tunnel model in different dataset split(2:1
 
 ### 2. Predictive data mining
 
-Predictive data mining can be view at: [here](https://github.com/JingLongChia/A211-SQIT5033-Hotel-Booking-Demand-Project/blob/main/Descriptive%20data%20mining/Descriptive%20Hotel%20(Train2Test1).ipynb)
+Predictive data mining can be view at: [here](https://github.com/JingLongChia/A211-SQIT5033-Hotel-Booking-Demand-Project/tree/main/Predrictive%20data%20mining)
 
 Target will set as is_canceled and other data select for this Predictive data mining based on the correlation on the Heatmaps.
 
@@ -332,7 +335,7 @@ X = df_1[['hotel','lead_time','market_segment', 'deposit_type','customer_type','
 y = df_1['is_canceled']
 ```
 
-For this Descriptive data mining will using two different dataset split which is 2:1 and 4:1
+For this Predictive data mining will using two different dataset split which is 2:1 and 4:1
 
 ```Python
 X_train, X_test, y_train, y_test = train_test_split(X, y, stratify = y, test_size = 0.33, random_state = 42)
@@ -346,8 +349,74 @@ The categorical selected will be converting from categorical variables to numeri
 cat_columns = ['hotel','market_segment','deposit_type','customer_type']
 num_columns = ['lead_time','Room','net_cancelled']
 ```
+Below is the pipeline for the LabelEncoder and the logistic regression classification algorithm and decision tree classification algorithm.
+
+- Logistic regression is a classification technique borrowed by machine learning from the field of statistics. Logistic Regression is a statistical method for analyzing a dataset in which there are one or more independent variables that determine an outcome. The intention behind using logistic regression is to find the best fitting model to describe the relationship between the dependent and the independent variable.
+
+- Decision Tree is a Supervised learning technique that can be used for both classification and Regression problems, but mostly it is preferred for solving Classification problems. It is a tree-structured classifier, where internal nodes represent the features of a dataset, branches represent the decision rules and each leaf node represents the outcome.
+
+```Python
+categorical_pipeline = Pipeline([
+    ('encoder', OneHotEncoder())
+])
+
+numerical_pipeline = Pipeline([
+    ('scaler', RobustScaler())
+])
+
+prepocessor = ColumnTransformer([
+    ('categorical',categorical_pipeline,cat_columns),
+    ('numerical', numerical_pipeline,num_columns)
+])
+
+pipe_logreg = Pipeline([
+    ("prep", prepocessor),
+    ("algo", LogisticRegression())
+])
+
+pipe_DT = Pipeline([
+    ("prep", prepocessor),
+    ("algo", DecisionTreeClassifier())
+])
+```
+
+After running the base model result of logistic regression and decision tree, of both two of dataset split (2:1 and 4:1).
+We will run for Hyperparameter Tuning model for logistic regression and decision tree by using GridSearchCV for both two of dataset split (2:1 and 4:1).
+GridSearchCV is a model selection step and this should be done after Data Processing tasks. 
+It is always good to compare the performances of Tuned and Untuned Models. 
+This will cost us the time and expense but will surely give us the best results. 
+The scikit-learn API is a great resource in case of any help. It’s always good to learn by doing.
+
+Below is the parameter for GridSearchCV logistic regression.
+
+```Python
+param_logreg = {
+    'algo__penalty':['l2', 'l1', 'elasticnet'],
+    'algo__C':[1.0, 2.0, 3.0, 4.0,5.0],
+    'algo__class_weight':[None, 'balanced']
+}
+model_logreg = GridSearchCV(estimator=pipe_logreg, param_grid=param_logreg, cv = 3, n_jobs = -1, verbose = 1, scoring='accuracy')
+model_logreg.fit(X_train, y_train)
+```
+Below is the parameter for GridSearchCV decision tree.
+
+```Python
+param_DT = {
+    'algo__min_samples_split': [2,1,3,4,6,8,10,],
+    'algo__max_depth': [None,1,2,4,8,10,12,14,18, 20],
+    'algo__min_samples_leaf':[1,2,4,5,8]
+}
+
+model_DT = GridSearchCV(estimator=pipe_DT, param_grid=param_DT, cv = 3, n_jobs = -1, verbose = 1, scoring='accuracy')
+model_DT.fit(X_train, y_train)
+```
+After running all the base model and tunnel model in different dataset split(2:1 and 4:1), we will compare both and select the best performing model.
 
 ## Results and analysis of the performance comparison
+
+### 1. Descriptive data mining
+
+### 2. Predictive data mining
 
 ## Data product
 
