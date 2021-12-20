@@ -597,14 +597,14 @@ Best performing model for will be Predictive data mining used:
 
 1. Leverage the power of a well optimized website
 
-    - Visually attractive website
-    - Offer & Ensure Best Rate Guarantee
-    - Multilanguage & multi currency features
+ - Visually attractive website
+ - Offer & Ensure Best Rate Guarantee
+ - Multilanguage & multi currency features
   
 2. Increase Hotel Online Reputation
 
-    - Almost 98% of travelers read hotel reviews and 80% of them consider them extremely important before making the final reservation. A one-point increase in a hotel’s average user rating on a 5-point scale (eg, 3.8 to 4.8) makes potential customers 13.5% more likely to book that hotel
+ - Almost 98% of travelers read hotel reviews and 80% of them consider them extremely important before making the final reservation. A one-point increase in a hotel’s average user rating on a 5-point scale (eg, 3.8 to 4.8) makes potential customers 13.5% more likely to book that hotel
 
 3. Offer Loyalty program with difference
 
-    - Incentivizing your guest with loyalty programs to book directly at the hotel website, by giving them points that could easily be redeemed not only at the hotel but at also at certain POS outlets
+ - Incentivizing your guest with loyalty programs to book directly at the hotel website, by giving them points that could easily be redeemed not only at the hotel but at also at certain POS outlets
